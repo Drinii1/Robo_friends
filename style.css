@@ -1,0 +1,37 @@
+/* h1{
+    font-family: sans-serif;
+}
+.input_container{
+    border-radius: 10px;
+    width: 150px;
+    height: 30px;
+    border: 0.5 px solid black;
+}
+.box_container{
+    width: 230px;
+    height: 290px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #DCDCDC
+;
+}
+#citySelector{
+    border-radius: 10px;
+    width: 120px;
+    height: 30px;
+}
+img{
+    margin-left: 20px;
+}
+.name_holder{
+    margin-left: 40px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.name_holder2{
+    margin-left: 50px;
+}
+.box_container{
+    display: grid;
+    grid-column: auto;
+} */
