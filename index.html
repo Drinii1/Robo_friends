@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Strange Friends</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-  <body>
-    <h1>Strange Friends</h1>
-    <input
-    id="input_container"
-      class="input_container"
-      placeholder="Search by name..."
-      type="search"
-    />
-    <select name="city" id="citySelector">
-      <option value="">Select a city</option>
-      <option>Gwenborough</option>
-      <option>Wisokyburgh</option>
-      <option>McKenziehaven</option>
-      <option>South Elvis</option>
-      <option>Roscoeview</option>
-      <option>South Christy</option>
-      <option>Howemouth</option>
-      <option>Aliyaview</option>
-      <option>Bartholomebury</option>
-      <option>Lebsackbury</option>
+  <h1>Strange Friends</h1>
+
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Search by name..." />
+    <select id="citySelect">
+      <option value="all">All Cities</option>
     </select>
-    <br />
-    <br />
-    <div id="section_container" class="section_container">
-      
+  </div>
 
+  <p id="statusText"></p>
 
-      
-    </div>
-  </body>
-  <script src="components.js"></script>
+  <section id="usersContainer"></section>
+
   <script src="script.js"></script>
+</body>
 </html>
