@@ -47,7 +47,7 @@ const renderPosts = async (userId) => {
   const posts = await response.json();
 
   const postiContainer = document.getElementById('posts');
-  postiContainer.innerHTML = posts.slice(0, 3).map(post=> `<p>• ${post.title}</p>`).join('');
+  postiContainer.innerHTML = posts.slice(0, 3).map(post=> `<p> ${post.title}</p>`).join('');
 };
 
 const renderUsers = (list) => {
@@ -65,16 +65,10 @@ const renderUsers = (list) => {
 
     card.addEventListener('click', () => {
       modalContent.innerHTML = `
-        <strong>Infos:</strong><br><br>
-        <strong>Email:</strong> ${user.email}<br>
-        <strong>Username:</strong> ${user.username}<br>
-        <strong>Address:</strong> ${user.address.street}<br>
-        <strong>Phone:</strong> ${user.phone}<br>
-        <strong>Website:</strong> ${user.website}<br><br>
-        <strong>Posts:</strong>
-        <div id="posts">Loading posts...</div>
+        <strong>Infos:</strong><br><br><strong>Email:</strong> ${user.email}<br><strong>Username:</strong> ${user.username}<br><strong>Address:</strong> ${user.address.street}<br>
+        <strong>Phone:</strong> ${user.phone}<br><strong>Website:</strong> ${user.website}<br><br><strong>Posts:</strong><div id="posts">Loading posts...</div>
       `;
-      
+
       modalOverlay.style.display = 'flex';
       renderPosts(user.id);
     });
