@@ -3,13 +3,10 @@ const citySelect = document.querySelector('#citySelect');
 const usersContainer = document.querySelector('#usersContainer');
 const statusText = document.querySelector('#statusText');
 
-const modalOverlay = document.getElementById('modalOverlay')
-
-const modal = document.getElementById('modal')
-
-const buttonModal = document.getElementById('closeModal')
-
-const modalContent = document.getElementById('modalContent')
+const modalOverlay = document.getElementById('modalOverlay');
+const modal = document.getElementById('modal');
+const buttonModal = document.getElementById('closeModal');
+const modalContent = document.getElementById('modalContent');
 
 let users = [];
 
@@ -25,7 +22,6 @@ const cities = [
   'Bartholomebury',
   'Lebsackbury'
 ];
-
 
 const loadUsers = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -45,14 +41,11 @@ const buildCityDropdown = () => {
   });
 };
 
-  const newAPI = async(userId) => {
-    const newResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
-    const newData = await newResponse.json()
-    newUsers = newData
-
-}
-
-  
+const newAPI = async (userId) => {
+  const newResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+  const newData = await newResponse.json();
+  newUsers = newData;
+};
 
 const renderUsers = (list) => {
   usersContainer.innerHTML = '';
@@ -68,39 +61,34 @@ const renderUsers = (list) => {
     `;
 
     usersContainer.appendChild(card);
-    card.addEventListener('click',() => {
-      modalContent.innerHTML = `<strong>Infos:</strong> <br>  <br> <strong>Email:</strong>${user.email} <br>
-     <strong> Username:</strong>${user.username}  <br> <strong>Address:</strong>${user.address.street} <br> <strong>Phone Number:</strong>${user.phone}  <br> <strong>Website</strong>:${user.website}
-      
 
-      `
-      
-            modalOverlay.style.display = 'flex'
-          
-            newAPI(user.id)
-    })
+    card.addEventListener('click', () => {
+      modalContent.innerHTML = `
+        <strong>Infos:</strong> <br><br>
+        <strong>Email:</strong> ${user.email} <br>
+        <strong>Username:</strong> ${user.username} <br>
+        <strong>Address:</strong> ${user.address.street} <br>
+        <strong>Phone Number:</strong> ${user.phone} <br>
+        <strong>Website:</strong> ${user.website}
+      `;
+
+      modalOverlay.style.display = 'flex';
+      newAPI(user.id);
+    });
   });
 
   statusText.textContent = `Showing ${list.length} of ${users.length} users.`;
 };
 
-
 buttonModal.addEventListener('click', () => {
-    modalOverlay.style.display = 'none'
-
+  modalOverlay.style.display = 'none';
 });
+
 // const modalChange = () => {
-//     modal.innerHTML = modalOverlay
-//      buttonModal.innerHtml = modalOverlay
-
-//      modalContent.innerHTML = `Email:${user.email}`
-// }
-
-
-
-
-
-
+//   modal.innerHTML = modalOverlay;
+//   buttonModal.innerHtml = modalOverlay;
+//   modalContent.innerHTML = `Email:${user.email}`;
+// };
 
 const applyFilters = () => {
   const searchValue = searchInput.value.toLowerCase();
@@ -110,29 +98,27 @@ const applyFilters = () => {
   //   const matchesName = user.name.toLowerCase().includes(searchValue);
   //   const matchesCity =
   //     selectedCity === 'all' || user.address.city === selectedCity;
-
   //   return matchesName && matchesCity;
   // });
-  let filteredUsers = users
-  if(searchInput){
-    filteredUsers = filteredUsers.filter(user => user.name.toLowerCase().includes(searchValue))
-  }
-  
-  
 
-  
-  if(selectedCity !== 'all' ){
-   
-      filteredUsers = filteredUsers.filter(user => user.address.city === selectedCity)
+  let filteredUsers = users;
+
+  if (searchInput) {
+    filteredUsers = filteredUsers.filter(user =>
+      user.name.toLowerCase().includes(searchValue)
+    );
   }
+
+  if (selectedCity !== 'all') {
+    filteredUsers = filteredUsers.filter(user =>
+      user.address.city === selectedCity
+    );
+  }
+
   renderUsers(filteredUsers);
 };
-
-
 
 searchInput.addEventListener('input', applyFilters);
 citySelect.addEventListener('change', applyFilters);
 
-
-
-loadUsers()
+loadUsers();
