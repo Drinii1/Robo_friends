@@ -111,3 +111,61 @@ select {
     #modalContent p {
       margin: 6px 0;
     }
+
+@media (max-width: 768px) {
+  #usersContainer {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #usersContainer {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+
+  #modal {
+    max-width: 90%;
+    padding: 15px;
+  }
+}
